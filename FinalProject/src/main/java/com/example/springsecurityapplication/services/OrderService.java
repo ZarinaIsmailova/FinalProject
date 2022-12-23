@@ -42,8 +42,4 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 
-    public List<Order> getOrderNumberEndingWith(String ending_with){
-        List<Order> orders = orderRepository.findByNumberEndingWith(ending_with);
-        return orders;
-    }
 }

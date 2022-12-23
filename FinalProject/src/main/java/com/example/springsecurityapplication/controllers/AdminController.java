@@ -299,12 +299,12 @@ public class AdminController {
 
 
 
-    @PostMapping("/order/searching")
-    public String searching(@RequestParam("search") String search, Model model) {
-        model.addAttribute("search", orderRepository.findByNumberEndingWith(search));
-        model.addAttribute("search1", search);
-        model.addAttribute("orders", orderService.getAllOrder());
-        return "redirect:/admin/order";
+    @PostMapping("admin/order/searching_order")
+    public String searching_order(@RequestParam("search") String search, Model model) {
+        model.addAttribute("search_order", orderRepository.findByNumberEndingWith(search));
+        model.addAttribute("value_search", search);
+        model.addAttribute("order", orderService.getAllOrder());
+        return "/order/order";
     }
 
 }

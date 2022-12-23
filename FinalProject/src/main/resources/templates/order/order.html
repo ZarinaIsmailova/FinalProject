@@ -12,6 +12,34 @@
   <a th:href="@{/admin}">Вернуться в личный кабинет</a>
   </div>
 </header>
+<div class="container-fluid">
+    <form th:method="POST" th:action="@{admin/order/searching_order}">
+        <fieldset>
+            <legend>Поиск заказа</legend>
+            <br>
+            <label for="search">Введите последние 4 цифры заказа</label>
+            <input type="search" name="search"  th:value="*{value_search}" id="search">
+            <br>
+            <br>
+            <input type="submit" value="Найти">
+        </fieldset>
+    </form>
+</div>
+
+<h3>Результат: </h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+    <div class="col" th:each="order : ${search_order}">
+        <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
+        <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="300px">
+        <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
+        <p th:text="'Количество: ' + ${order.getCount()}"></p>
+        <p th:text="'Цена: ' + ${order.getPrice()}"></p>
+        <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+        <p th:text="'Статус: ' + ${order.getStatus()}"></p>
+        <a class="low" th:href="@{/admin/order/edit/{id}(id=${order.getId()})}">Изменить статус</a>
+    </div>
+</div>
+<hr>
 <div class="container">
       <h3>Заказы: </h3>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
@@ -25,34 +53,7 @@
             <p style="color: #be264c" th:text="'Статус: ' + ${element.getStatus()}"></p>
         </div>
   </div>
-<div class="container-fluid">
-    <form th:method="POST" th:action="@{/order/searching}">
-        <fieldset>
-            <legend>Поиск заказа</legend>
-            <br>
-            <label for="search">Введите последние 4 цифры заказа</label>
-            <input type="search" name="search"  th:value="*{search}" id="search">
-            <br>
-            <br>
-            <input type="submit" value="Найти">
-        </fieldset>
-    </form>
-</div>
 
-    <h3>Результат: </h3>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-        <div class="col" th:each="order : ${search}">
-            <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
-            <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="300px">
-            <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
-            <p th:text="'Количество: ' + ${order.getCount()}"></p>
-            <p th:text="'Цена: ' + ${order.getPrice()}"></p>
-            <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
-            <p th:text="'Статус: ' + ${order.getStatus()}"></p>
-            <a class="low" th:href="@{/admin/order/edit/{id}(id=${order.getId()})}">Изменить статус</a>
-        </div>
-    </div>
-    <hr>
 
 
 </div>

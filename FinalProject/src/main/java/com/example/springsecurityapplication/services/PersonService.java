@@ -50,6 +50,11 @@ public class PersonService {
         Optional<Person> optionalPerson = personRepository.findById(id);
         return optionalPerson.orElse(null);
     }
+
+    public Person getPersonByLogin(String login){
+        Optional<Person> optionalPerson = personRepository.findByLogin(login);
+        return optionalPerson.orElse(null);
+    }
     // Данный метод позволяет обновить данные пользователя
     @Transactional
     public void updatePerson(int id, Person person){
