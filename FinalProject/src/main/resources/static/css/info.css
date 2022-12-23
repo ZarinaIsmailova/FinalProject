@@ -1,0 +1,39 @@
+body{
+    background-color: #d2d2c9;
+}
+header{
+    background-color:#be264c;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.container{
+    margin-top: 50px;
+}
+img{
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 12px;
+    width: 250px;
+
+}
+p{
+   padding-top: 20px;
+}
+
+.title1{
+    background: aliceblue;
+}
+a{
+    color: black;
+    align-self: center;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #fdf5ee;
+    background-color: black;
+    padding: 5px;
+    border-radius: 10px;
+}

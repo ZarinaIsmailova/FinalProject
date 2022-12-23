@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Изменение статуса заказа</title>
+</head>
+<body>
+<h3>Заказ</h3>
+
+    <form method="POST" th:action="@{/admin/order/edit/{id}(id=${editOrder.getId()})}" th:object="${editOrder}">
+>
+            <p th:text="${editOrder.getNumber()}"></p>
+            <p th:text="${editOrder.getStatus()}"></p>
+
+    <label for="status">Статус заказа</label>
+    <select id="status" th:field="*{status}">
+        <option th:each="state : ${T(com.example.springsecurityapplication.enumm.Status).values()}" th:value="${state}" th:text="${state}">
+    </select>
+        <input type="submit" value="Изменить">
+            <p th:text="${editOrder.getProduct().getTitle()}"></p>
+        </div>
+    </form>
+    <hr>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script th:src="@{/js/product.js}"></script>
+</body>
+</html>
